@@ -1,9 +1,8 @@
 <template>
-  <div class="hello">
-    <div class="welcome container">
+    <div class="chat container">
+      <h1 class="center teal-text" >Hello!</h1>
       <div class="card">
         <div class="card-content center-align">
-          <h1 class="teal-text" >Hello!</h1>
           <form @submit.prevent="enterChat">
             <label for="name">name</label>
             <input v-model="name" type="text" placeholder="enter message">
@@ -13,7 +12,6 @@
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -41,9 +39,8 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
-.welcome {
+<style >
+.chat {
   max-width: 400px;
   margin-top:100px;
 }
