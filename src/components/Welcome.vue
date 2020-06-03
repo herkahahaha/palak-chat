@@ -4,10 +4,9 @@
       <div class="card">
         <div class="card-content center-align">
           <form @submit.prevent="enterChat">
-            <label for="name">name</label>
             <input v-model="name" type="text" placeholder="enter message">
             <p v-if="feedback" class="red-text" >{{feedback}}</p>
-            <button class="btn teal">Enter Chat</button>
+            <button class="btn teal">Enter your name</button>
           </form>
         </div>
       </div>

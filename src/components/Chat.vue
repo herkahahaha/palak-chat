@@ -5,14 +5,15 @@
       <div class="card-container">
         <ul class="message">
           <li>
-            <span class="teal-text">Name : {{this.name}}</span>
+            <span class="teal-text">Name</span>
             <span class="grey-text text-darken-3">Message</span>
             <span class="grey-text time">Time:</span>
           </li>
         </ul>
       </div>
       <div class="card-action">
-        <NewMessage />
+          <!-- using props must be bind the properties or have ":""   -->
+        <NewMessage :name="name" />
       </div>
     </div>
   </div>
@@ -21,14 +22,19 @@
 import NewMessage from '@/components/NewMessage'
 export default {
   name: 'Chat',
-  props: {
-    name: String
-  },
   components: {
     NewMessage
   },
+  props: {
+    name: {
+      type: String,
+      required: true
+    }
+  },
   data () {
-    return {}
+    return {
+
+    }
   }
 }
 </script>
@@ -43,5 +49,9 @@ export default {
 .chat .time {
   display: block;
   font-size: 1rem;
+}
+.message {
+  padding: 1rem;
+  margin: 0 1rem;
 }
 </style>
