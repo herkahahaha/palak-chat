@@ -1,6 +1,6 @@
-import firebase from 'firebase'
+import * as firebase from 'firebase/app'
 // eslint-disable-next-line no-unused-vars
-import firestore from 'firebase/firestore'
+import 'firebase/firestore'
 
 // Your web app's Firebase configuration
 let firebaseConfig = {
@@ -15,7 +15,6 @@ let firebaseConfig = {
 }
 // Initialize Firebase
 const firebaseApp = firebase.initializeApp(firebaseConfig)
-firebaseApp
-  .firestore()
-  .settings({ timestampsInSnapshots: true })
-  .analytics()
+firebaseApp.firestore().settings({ timestampsInSnapshots: true })
+
+export default firebaseApp.firestore()
