@@ -1,6 +1,8 @@
 # hei-vue
 
-> exam
+> exam to learn something from vue
+
+- demo https://hei-vue.web.app/
 
 ## Build Setup
 
