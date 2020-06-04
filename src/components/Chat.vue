@@ -1,6 +1,7 @@
 <template>
   <div class="chat container">
     <h2 class="center teal-text">Palak Chat</h2>
+    <h3 class="center teal-text">Haii {{name}}</h3>
     <div class="card">
       <div class="card-container">
         <ul class="message" v-chat-scroll>
@@ -67,9 +68,10 @@ export default {
 .chat {
   max-width: 400px;
 }
-.chat h2 {
+.chat h2 ,h3 {
   font-size: 1.6rem;
   margin-top: 2rem;
+  text-transform: capitalize;
 }
 .chat .time {
   display: block;
