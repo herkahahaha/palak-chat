@@ -4,10 +4,10 @@
     <div class="card">
       <div class="card-container">
         <ul class="message">
-          <li>
-            <span class="teal-text">Name</span>
-            <span class="grey-text text-darken-3">Message</span>
-            <span class="grey-text time">Time:</span>
+          <li v-for="message in messages" :key="message.id">
+            <span class="teal-text">{{message.name}} :</span>
+            <span class="grey-text text-darken-3">{{message.content}}</span>
+            <span class="grey-text time">{{message.time}}</span>
           </li>
         </ul>
       </div>
@@ -20,6 +20,8 @@
 </template>
 <script>
 import NewMessage from '@/components/NewMessage'
+import dbFirebase from '@/firebase/init.js'
+
 export default {
   name: 'Chat',
   components: {
@@ -33,8 +35,27 @@ export default {
   },
   data () {
     return {
+      messages: []
 
     }
+  },
+  created () {
+    // print data from database to our interrface
+    let ref = dbFirebase.collection('message').orderBy('timestamp')
+    ref.onSnapshot(snapshot => {
+      // console.log(snapshot.docChanges())
+      snapshot.docChanges().forEach(change => {
+        if (change.type === 'added') {
+          let doc = change.doc
+          this.messages.push({
+            id: doc.id,
+            name: doc.data().name,
+            content: doc.data().content,
+            timestamp: doc.data().timestamp
+          })
+        }
+      })
+    })
   }
 }
 </script>
