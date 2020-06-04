@@ -4,6 +4,8 @@
     <div class="card">
       <div class="card-container">
         <ul class="message">
+          <!-- consume already data from db and display it -->
+          <!-- using v-for to loop the data and bind the key with id -->
           <li v-for="message in messages" :key="message.id">
             <span class="teal-text">{{message.name}} :</span>
             <span class="grey-text text-darken-3">{{message.content}}</span>
@@ -48,6 +50,7 @@ export default {
         if (change.type === 'added') {
           let doc = change.doc
           this.messages.push({
+            // parse object data to array data 'messages'
             id: doc.id,
             name: doc.data().name,
             content: doc.data().content,
