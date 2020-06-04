@@ -3,6 +3,10 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+// add chat-scroll tobe bottom chat
+import VueChatScroll from 'vue-chat-scroll'
+
+Vue.use(VueChatScroll)
 
 Vue.config.productionTip = false
 

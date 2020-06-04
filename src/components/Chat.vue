@@ -3,13 +3,13 @@
     <h2 class="center teal-text">Palak Chat</h2>
     <div class="card">
       <div class="card-container">
-        <ul class="message">
+        <ul class="message" v-chat-scroll>
           <!-- consume already data from db and display it -->
           <!-- using v-for to loop the data and bind the key with id -->
           <li v-for="message in messages" :key="message.id">
             <span class="teal-text">{{message.name}} :</span>
             <span class="grey-text text-darken-3">{{message.content}}</span>
-            <span class="grey-text time">{{message.time}}</span>
+            <span class="grey-text time">{{message.timestamp}}</span>
           </li>
         </ul>
       </div>
@@ -23,6 +23,7 @@
 <script>
 import NewMessage from '@/components/NewMessage'
 import dbFirebase from '@/firebase/init.js'
+import moment from 'moment'
 
 export default {
   name: 'Chat',
@@ -54,7 +55,7 @@ export default {
             id: doc.id,
             name: doc.data().name,
             content: doc.data().content,
-            timestamp: doc.data().timestamp
+            timestamp: moment(doc.data().timestamp).format('lll')
           })
         }
       })
@@ -77,5 +78,7 @@ export default {
 .message {
   padding: 1rem;
   margin: 0 1rem;
+  max-height: 300px;
+  overflow: auto;
 }
 </style>
